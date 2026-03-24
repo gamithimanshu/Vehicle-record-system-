@@ -1,0 +1,16 @@
+<section class="auth-shell page-section">
+  <form class="form-container panel" [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
+    <h2>Login</h2>
+    <p class="subtitle">Good to see you again. Sign in to continue.</p>
+
+    <input id="email" type="email" formControlName="email" placeholder="Email" />
+    <input id="password" type="password" formControlName="password" placeholder="Password" />
+
+    <button type="submit" [disabled]="isSubmitting">
+      <span *ngIf="!isSubmitting">Login</span>
+      <span *ngIf="isSubmitting">Logging in...</span>
+    </button>
+
+    <p class="switch-link">Don't have an account? <a routerLink="/register">Register</a></p>
+  </form>
+</section>

@@ -1,0 +1,60 @@
+<footer class="site-footer">
+  <div class="footer-shell">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2>Vehicle Management System</h2>
+        <p>
+          Keep vehicle records together and easier to manage.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>Navigation</h3>
+          <a
+            routerLink="/home"
+            routerLinkActive="active-footer-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Home
+          </a>
+          <a routerLink="/about-us" routerLinkActive="active-footer-link">About</a>
+          <a routerLink="/contact-us" routerLinkActive="active-footer-link">Contact</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Account</h3>
+          <ng-container *ngIf="user$ | async; else guestLinks">
+            <a
+              *ngIf="userRole === 'admin'"
+              routerLink="/dashboard"
+              routerLinkActive="active-footer-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              Dashboard
+            </a>
+            <a routerLink="/add-vehicle" routerLinkActive="active-footer-link">Add Vehicle</a>
+            <a routerLink="/vehicles" routerLinkActive="active-footer-link">Vehicles</a>
+          </ng-container>
+
+          <ng-template #guestLinks>
+            <a routerLink="/login" routerLinkActive="active-footer-link">Login</a>
+            <a routerLink="/register" routerLinkActive="active-footer-link">Register</a>
+          </ng-template>
+        </div>
+
+        <div class="footer-column">
+          <h3>Support</h3>
+          <p>Email: hiamshugamit&#64;gmail.com</p>
+          <p>Phone: +91 6355500916</p>
+          <p>Location: Vyara, Gujarat</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {{ currentYear }} Vehicle Management System. All rights reserved.</span>
+      <span>Vehicle records and access management.</span>
+    </div>
+  </div>
+</footer>

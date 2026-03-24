@@ -1,0 +1,41 @@
+<section class="page-section">
+  <div class="form-container panel">
+    <div class="form-header">
+      <div>
+        <h2>Edit Vehicle Record</h2>
+        <p class="form-copy">Update the vehicle details below and save your changes.</p>
+      </div>
+
+      <a routerLink="/dashboard" class="back-link">Back to Dashboard</a>
+    </div>
+
+    <p *ngIf="isLoading" class="status-copy">Loading vehicle details...</p>
+
+    <div *ngIf="!isLoading && vehicleNotFound" class="status-box">
+      <h3>Vehicle not found</h3>
+      <p>The selected vehicle record could not be found.</p>
+      <a routerLink="/dashboard" class="back-link inline-link">Return to Dashboard</a>
+    </div>
+
+    <form *ngIf="!isLoading && !vehicleNotFound" [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+      <input formControlName="registrationNumber" placeholder="Registration Number" />
+      <input formControlName="licenseNumber" placeholder="License Number" />
+      <input formControlName="ownerName" placeholder="Owner Name" />
+      <input formControlName="vehicleType" placeholder="Vehicle Type" />
+      <input formControlName="usageType" placeholder="Usage Type" />
+      <input formControlName="fuelType" placeholder="Fuel Type" />
+      <input formControlName="manufacturer" placeholder="Manufacturer" />
+      <input formControlName="model" placeholder="Model" />
+      <input type="number" formControlName="year" placeholder="Year" />
+      <input formControlName="color" placeholder="Color" />
+
+      <div class="form-actions">
+        <a routerLink="/dashboard" class="secondary-link">Cancel</a>
+        <button type="submit" [disabled]="isSubmitting || vehicleForm.invalid">
+          <span *ngIf="!isSubmitting">Save Changes</span>
+          <span *ngIf="isSubmitting">Saving...</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

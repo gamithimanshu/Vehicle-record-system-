@@ -1,0 +1,96 @@
+<section class="page-section">
+  <div class="container panel">
+    <div class="header-row">
+      <div>
+        <h2>Vehicle Records</h2>
+        <p class="results-copy">
+          {{ filteredVehicles.length }} vehicle{{ filteredVehicles.length === 1 ? '' : 's' }} found
+        </p>
+      </div>
+
+      <button type="button" class="clear-btn" (click)="clearFilters()">Clear Filters</button>
+    </div>
+
+    <div class="filters-grid">
+      <label class="filter-field filter-search">
+        <span>Search</span>
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="applyFilters()"
+          placeholder="Search by reg no, owner, model..."
+        />
+      </label>
+
+      <label class="filter-field">
+        <span>Type</span>
+        <select [(ngModel)]="selectedVehicleType" (ngModelChange)="applyFilters()">
+          <option value="all">All types</option>
+          <option *ngFor="let type of vehicleTypes" [value]="type">{{ type }}</option>
+        </select>
+      </label>
+
+      <label class="filter-field">
+        <span>Usage</span>
+        <select [(ngModel)]="selectedUsageType" (ngModelChange)="applyFilters()">
+          <option value="all">All usage</option>
+          <option *ngFor="let usage of usageTypes" [value]="usage">{{ usage }}</option>
+        </select>
+      </label>
+
+      <label class="filter-field">
+        <span>Fuel</span>
+        <select [(ngModel)]="selectedFuelType" (ngModelChange)="applyFilters()">
+          <option value="all">All fuel</option>
+          <option *ngFor="let fuel of fuelTypes" [value]="fuel">{{ fuel }}</option>
+        </select>
+      </label>
+
+      <label class="filter-field">
+        <span>Year</span>
+        <select [(ngModel)]="selectedYear" (ngModelChange)="applyFilters()">
+          <option value="all">All years</option>
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Reg No</th>
+            <th>License No</th>
+            <th>Owner</th>
+            <th>Type</th>
+            <th>Usage</th>
+            <th>Fuel</th>
+            <th>Manufacturer</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Color</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let v of filteredVehicles">
+            <td>{{ v.registrationNumber }}</td>
+            <td>{{ v.licenseNumber }}</td>
+            <td>{{ v.ownerName }}</td>
+            <td>{{ v.vehicleType }}</td>
+            <td>{{ v.usageType }}</td>
+            <td>{{ v.fuelType }}</td>
+            <td>{{ v.manufacturer }}</td>
+            <td>{{ v.model }}</td>
+            <td>{{ v.year }}</td>
+            <td>{{ v.color }}</td>
+          </tr>
+
+          <tr *ngIf="filteredVehicles.length === 0">
+            <td colspan="10" class="empty-state">No vehicles match your current search or filters.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

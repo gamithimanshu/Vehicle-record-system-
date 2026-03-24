@@ -1,0 +1,23 @@
+<section class="page-section">
+  <div class="form-container panel">
+    <h2>Add a Vehicle Record</h2>
+
+    <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+      <input formControlName="registrationNumber" placeholder="Registration Number" />
+      <input formControlName="licenseNumber" placeholder="License Number" />
+      <input formControlName="ownerName" placeholder="Owner Name" />
+      <input formControlName="vehicleType" placeholder="Vehicle Type" />
+      <input formControlName="usageType" placeholder="Usage Type" />
+      <input formControlName="fuelType" placeholder="Fuel Type" />
+      <input formControlName="manufacturer" placeholder="Manufacturer" />
+      <input formControlName="model" placeholder="Model" />
+      <input type="number" formControlName="year" placeholder="Year" />
+      <input formControlName="color" placeholder="Color" />
+
+      <button type="submit" [disabled]="isSubmitting || vehicleForm.invalid">
+        <span *ngIf="!isSubmitting">Add Vehicle</span>
+        <span *ngIf="isSubmitting">Saving...</span>
+      </button>
+    </form>
+  </div>
+</section>

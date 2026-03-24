@@ -1,0 +1,72 @@
+.auth-shell {
+  min-height: calc(100vh - 94px);
+  display: grid;
+  place-items: center;
+  padding-bottom: 1.8rem;
+}
+
+.form-container {
+  width: min(460px, 100%);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0.45rem 0 1rem;
+  color: var(--text-muted);
+}
+
+input,
+select {
+  margin-top: 0.65rem;
+  padding: 0.72rem 0.82rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.93rem;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #3182ce;
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.18);
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.72rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0054d1, #0b7cc1);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(0.96);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.switch-link {
+  margin-top: 0.85rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.switch-link a {
+  color: #0045b5;
+  font-weight: 700;
+  text-decoration: none;
+}

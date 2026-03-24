@@ -1,0 +1,87 @@
+.container {
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  margin: 0;
+}
+
+.meta {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+}
+
+.table-wrap {
+  margin-top: 1rem;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface-strong);
+  font-size: 0.84rem;
+  min-width: 1180px;
+}
+
+th,
+td {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 0.58rem;
+  text-align: left;
+}
+
+th {
+  background: #eef5ff;
+  color: #1e3a8a;
+  font-size: 0.77rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+input {
+  width: 100%;
+  padding: 0.42rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #3182ce;
+}
+
+button {
+  padding: 0.42rem 0.68rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.actions {
+  white-space: nowrap;
+}
+
+.edit-btn {
+  background: #0054d1;
+  margin-right: 0.34rem;
+}
+
+.save-btn {
+  background: #0f9d58;
+  margin-right: 0.34rem;
+}
+
+.delete-btn {
+  background: #d93025;
+}
+
+.cancel-btn {
+  background: #64748b;
+}

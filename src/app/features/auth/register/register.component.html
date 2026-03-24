@@ -1,0 +1,25 @@
+<section class="auth-shell page-section">
+  <form class="form-container panel" [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+    <h2>Create Account</h2>
+    <p class="subtitle">Set up your profile and start managing vehicles.</p>
+
+    <input formControlName="fullName" placeholder="Full Name" />
+    <input formControlName="email" placeholder="Email" />
+    <input formControlName="phone" placeholder="Phone Number" />
+
+    <select formControlName="role">
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+
+    <input type="password" formControlName="password" placeholder="Password" />
+    <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" />
+
+    <button type="submit" [disabled]="isSubmitting">
+      <span *ngIf="!isSubmitting">Register</span>
+      <span *ngIf="isSubmitting">Registering...</span>
+    </button>
+
+    <p class="switch-link">Already have account? <a routerLink="/login">Login</a></p>
+  </form>
+</section>

@@ -1,0 +1,46 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <a class="logo" routerLink="/home">
+    <span class="logo-mark">VSM</span>
+    <span class="logo-title">Vehicle Management</span>
+  </a>
+
+  <ul class="nav-links">
+    <li>
+      <a
+        routerLink="/home"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Home
+      </a>
+    </li>
+    <li><a routerLink="/about-us" routerLinkActive="active-link">About</a></li>
+    <li><a routerLink="/contact-us" routerLinkActive="active-link">Contact</a></li>
+
+    <ng-container *ngIf="user$ | async">
+      <li *ngIf="userRole === 'admin'">
+        <a
+          routerLink="/dashboard"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Dashboard
+        </a>
+      </li>
+      <li><a routerLink="/add-vehicle" routerLinkActive="active-link">Add Vehicle</a></li>
+      <li><a routerLink="/vehicles" routerLinkActive="active-link">Vehicles</a></li>
+    </ng-container>
+  </ul>
+
+  <div class="nav-actions" *ngIf="user$ | async as user; else guestActions">
+    <span class="user-name">{{ userName || user.email }}</span>
+    <button type="button" class="action-btn logout-btn" (click)="onLogout()">Logout</button>
+  </div>
+
+  <ng-template #guestActions>
+    <div class="nav-actions">
+      <a routerLink="/login" routerLinkActive="active-btn" class="action-btn">Login</a>
+      <a routerLink="/register" routerLinkActive="active-btn" class="action-btn secondary-btn">Register</a>
+    </div>
+  </ng-template>
+</nav>

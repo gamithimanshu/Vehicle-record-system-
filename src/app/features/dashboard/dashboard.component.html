@@ -1,0 +1,60 @@
+<section class="page-section">
+  <div class="container panel">
+    <h2>Admin Dashboard</h2>
+    <p *ngIf="currentUser" class="meta">Logged in as: {{ userName }}</p>
+    <p class="meta">Review records, make edits, and keep your vehicle data clean.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>Reg No</th>
+          <th>License No</th>
+          <th>Owner</th>
+          <th>Type</th>
+          <th>Usage</th>
+          <th>Fuel</th>
+          <th>Manufacturer</th>
+          <th>Model</th>
+          <th>Year</th>
+          <th>Color</th>
+          <th>Action</th>
+        </tr>
+
+        <tr *ngFor="let v of vehicles">
+          <ng-container *ngIf="editingVehicleId === v.id; else readOnlyRow">
+            <td><input [formControl]="editForm.controls.registrationNumber" /></td>
+            <td><input [formControl]="editForm.controls.licenseNumber" /></td>
+            <td><input [formControl]="editForm.controls.ownerName" /></td>
+            <td><input [formControl]="editForm.controls.vehicleType" /></td>
+            <td><input [formControl]="editForm.controls.usageType" /></td>
+            <td><input [formControl]="editForm.controls.fuelType" /></td>
+            <td><input [formControl]="editForm.controls.manufacturer" /></td>
+            <td><input [formControl]="editForm.controls.model" /></td>
+            <td><input type="number" [formControl]="editForm.controls.year" /></td>
+            <td><input [formControl]="editForm.controls.color" /></td>
+            <td class="actions">
+              <button class="save-btn" (click)="saveEdit(v.id)" [disabled]="editForm.invalid">Save</button>
+              <button class="cancel-btn" (click)="cancelEdit()">Cancel</button>
+            </td>
+          </ng-container>
+          <ng-template #readOnlyRow>
+            <td>{{ v.registrationNumber }}</td>
+            <td>{{ v.licenseNumber }}</td>
+            <td>{{ v.ownerName }}</td>
+            <td>{{ v.vehicleType }}</td>
+            <td>{{ v.usageType }}</td>
+            <td>{{ v.fuelType }}</td>
+            <td>{{ v.manufacturer }}</td>
+            <td>{{ v.model }}</td>
+            <td>{{ v.year }}</td>
+            <td>{{ v.color }}</td>
+            <td class="actions">
+              <button class="edit-btn" (click)="startEdit(v)">Edit</button>
+              <button class="delete-btn" (click)="delete(v.id)">Delete</button>
+            </td>
+          </ng-template>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>

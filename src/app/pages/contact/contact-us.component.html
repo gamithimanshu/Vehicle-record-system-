@@ -1,0 +1,23 @@
+<section class="page-section contact-page">
+  <div class="contact-layout">
+    <div class="contact-card">
+      <p class="eyebrow">Get In Touch</p>
+      <h1>Contact Us</h1>
+      <p class="intro">
+        Reach us directly for vehicle inquiries, support, or partnership questions. We are happy to help.
+      </p>
+
+      <div class="contact-list">
+        <div class="contact-item" *ngFor="let item of contactItems">
+          <p class="contact-label">{{ item.label }}</p>
+          <a *ngIf="item.href; else plainValue" [href]="item.href" class="contact-value">
+            {{ item.value }}
+          </a>
+          <ng-template #plainValue>
+            <p class="contact-value">{{ item.value }}</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
