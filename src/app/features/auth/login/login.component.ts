@@ -4,7 +4,6 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
 import { AuthService } from '../../../core/auth.service';
-import { auth } from '../../../core/firebase.config';
 
 @Component({
   standalone: true,
@@ -37,13 +36,13 @@ export class LoginComponent {
     try {
       await this.authService.login(email!, password!);
 
-      const uid = auth.currentUser?.uid;
+      const uid = this.authService.getCurrentUser()?.uid;
       if (!uid) {
         await this.router.navigate(['/login']);
         return;
       }
 
-      const userData: any = await this.authService.getCurrentUserData(uid);
+      const userData = await this.authService.getCurrentUserData(uid);
 
       if (userData?.role === 'admin') {
         await this.router.navigate(['/dashboard']);
